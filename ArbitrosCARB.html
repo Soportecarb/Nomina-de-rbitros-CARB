@@ -10,54 +10,84 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css">
 <style>
 :root{
-  --verde: #006644;
-  --verde-pastel: #eaf6f0;
+  /* He puesto los valores "verde" originales a tonos de gris para no cambiar referencias en el resto del archivo */
+  --verde: #3d3d3d;           /* ahora gris oscuro */
+  --verde-pastel: #f0f0f0;   /* gris claro para badges */
   --rojo-suave: #ffebee;
   --fondo: #fafcfa;
   --texto: #1a1a1a;
-  --gris-elegante: #3d3d3d; /* nuevo color agregado */
+  --gris-elegante: #3d3d3d; /* alias */
 }
-html, body {margin:0; height:100%; background:var(--fondo); color:var(--texto); font-family:'Open Sans',sans-serif;}
+
+html, body {
+  margin:0;
+  height:100%;
+  background:var(--fondo);
+  color:var(--texto);
+  font-family:'Open Sans',sans-serif;
+}
+
 .watermark {
-  position:fixed; top:50%; left:50%; transform:translate(-50%,-50%);
-  width:60vmin; height:60vmin;
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:60vmin;
+  height:60vmin;
   background:url('https://img1.wsimg.com/isteam/ip/ae18afb4-3c73-4098-bfc8-e108d3eff693/blob-802ab36.png/:/rs=w:600,h:450') center/contain no-repeat;
-  opacity:0.05; pointer-events:none; z-index:0;
+  opacity:0.05;
+  pointer-events:none;
+  z-index:0;
 }
+
 .page {position:relative; z-index:1; display:flex; flex-direction:column; min-height:100vh;}
+
 header {
-  header {
-  background:var(--gris-elegante); color:white; padding:20px 24px;
-  display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap;
+  background:var(--gris-elegante);
+  color:white;
+  padding:20px 24px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
 }
+
 header .branding {display:flex; align-items:center; gap:18px;}
 header img {height:110px; object-fit:contain;}
 header h1 {font-family:'Lato',sans-serif; margin:0; font-size:22px;}
 header p {margin:0; font-size:15px;}
+
 main {padding:24px; flex:1;}
+
 table.dataTable thead th {background:var(--gris-elegante); color:white;}
+
 .badge {padding:5px 10px; border-radius:8px; font-weight:600; font-size:0.95rem;}
-.badge.verde {background:var(--verde-pastel); color:var(--verde);}
+.badge.verde {background:var(--verde-pastel); color:var(--gris-elegante);} /* mantiene la clase .verde pero con gris */
 .badge.rojo {background:var(--rojo-suave); color:#b00020;}
-.dt-control {cursor:pointer; color:var(--verde); text-decoration:underline;}
+
+.dt-control {cursor:pointer; color:var(--gris-elegante); text-decoration:underline;}
+
 .detalle {background:white; border:1px solid #ddd; padding:12px; border-radius:10px; margin:6px 0;}
+
 footer {
-  footer {
-  background:var(--gris-elegante); color:white; text-align:center; padding:18px 20px; font-size:15px;
+  background:var(--gris-elegante);
+  color:white;
+  text-align:center;
+  padding:18px 20px;
+  font-size:15px;
 }
-}
+
 footer a {color:white; text-decoration:underline; margin:0 6px;}
 footer img {height:120px; margin-top:10px; opacity:0.95;}
+
 /* --- Fix responsive table --- */
 #arbitros {
   width: 100%;
   table-layout: auto;
 }
-  
 .dataTables_wrapper {
   overflow-x: auto;   /* habilita scroll horizontal si se necesita */
 }
-  
 #arbitros td, #arbitros th {
   white-space: normal;   /* permite saltos de línea */
   word-break: break-word;
