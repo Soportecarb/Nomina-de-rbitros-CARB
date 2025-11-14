@@ -16,6 +16,7 @@
   --rojo-suave: #ffebee;
   --fondo: #fafcfa;
   --texto: #1a1a1a;
+  --gris-elegante: #3d3d3d; /* nuevo color agregado */
 }
 html, body {margin:0; height:100%; background:var(--fondo); color:var(--texto); font-family:'Open Sans',sans-serif;}
 .watermark {
@@ -26,7 +27,8 @@ html, body {margin:0; height:100%; background:var(--fondo); color:var(--texto); 
 }
 .page {position:relative; z-index:1; display:flex; flex-direction:column; min-height:100vh;}
 header {
-  background:var(--verde); color:white; padding:20px 24px;
+  header {
+  background:var(--gris-elegante); color:white; padding:20px 24px;
   display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap;
 }
 header .branding {display:flex; align-items:center; gap:18px;}
@@ -34,14 +36,15 @@ header img {height:110px; object-fit:contain;}
 header h1 {font-family:'Lato',sans-serif; margin:0; font-size:22px;}
 header p {margin:0; font-size:15px;}
 main {padding:24px; flex:1;}
-table.dataTable thead th {background:var(--verde); color:white;}
+table.dataTable thead th {background:var(--gris-elegante); color:white;}
 .badge {padding:5px 10px; border-radius:8px; font-weight:600; font-size:0.95rem;}
 .badge.verde {background:var(--verde-pastel); color:var(--verde);}
 .badge.rojo {background:var(--rojo-suave); color:#b00020;}
 .dt-control {cursor:pointer; color:var(--verde); text-decoration:underline;}
 .detalle {background:white; border:1px solid #ddd; padding:12px; border-radius:10px; margin:6px 0;}
 footer {
-  background:var(--verde); color:white; text-align:center; padding:18px 20px; font-size:15px;
+  footer {
+  background:var(--gris-elegante); color:white; text-align:center; padding:18px 20px; font-size:15px;
 }
 footer a {color:white; text-decoration:underline; margin:0 6px;}
 footer img {height:120px; margin-top:10px; opacity:0.95;}
