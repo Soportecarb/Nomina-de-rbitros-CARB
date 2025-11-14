@@ -60,7 +60,7 @@ main {padding:24px; flex:1;}
 table.dataTable thead th {background:var(--gris-elegante); color:white;}
 
 .badge {padding:5px 10px; border-radius:8px; font-weight:600; font-size:0.95rem;}
-.badge.verde {background:var(--gris-claro); color:var(--gris-elegante);} 
+.badge.verde {background:var(--gris-claro); color:var(--gris-elegante);}
 .badge.rojo {background:var(--rojo-suave); color:#b00020;}
 
 .dt-control {cursor:pointer; color:var(--gris-elegante); text-decoration:underline;}
@@ -474,8 +474,8 @@ footer img {height:120px; margin-top:10px; opacity:0.95;}
         <td>Arbitraje en Contratación Pública; Obras por Impuesto; Contrataciones Públicas</td>
         <td><span class="badge rojo">—</span></td>
       </tr>
-                                                                        
-       
+
+      <!-- Comentario corregido: debe cerrar con --> correctamente -->
       </tbody>
     </table>
   </main>
@@ -544,7 +544,25 @@ $(document).ready(function () {
       { extend: 'pdfHtml5', text: 'PDF' },
       { extend: 'print', text: 'Imprimir' }
     ],
-    language: {  url: 'https://cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES 
+    language: { url: 'https://cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json' }
+  });
+
+  $('#arbitros tbody').on('click', 'td.dt-control', function () {
+    const tr = $(this).closest('tr');
+    const row = table.row(tr);
+    if (row.child.isShown()) {
+      row.child.hide();
+      tr.removeClass('shown');
+      $(this).text('Ver detalle');
+    } else {
+      const data = tr.data('rowData') || {};
+      row.child(formatDetalle(data)).show();
+      tr.addClass('shown');
+      $(this).text('Ocultar detalle');
+    }
+  });
+});
 </script>
 </body>
 </html>
+
