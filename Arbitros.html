@@ -8,43 +8,88 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css">
-
 <style>
 :root{
-  --verde: #006644;
-  --verde-pastel: #eaf6f0;
+  --gris-elegante: #3d3d3d;   /* gris oscuro */
+  --gris-claro: #f0f0f0;      /* gris claro para badges */
   --rojo-suave: #ffebee;
   --fondo: #fafcfa;
   --texto: #1a1a1a;
 }
-html, body {margin:0; height:100%; background:var(--fondo); color:var(--texto); font-family:'Open Sans',sans-serif;}
+
+html, body {
+  margin:0;
+  height:100%;
+  background:var(--fondo);
+  color:var(--texto);
+  font-family:'Open Sans',sans-serif;
+}
+
 .watermark {
-  position:fixed; top:50%; left:50%; transform:translate(-50%,-50%);
-  width:60vmin; height:60vmin;
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:60vmin;
+  height:60vmin;
   background:url('https://img1.wsimg.com/isteam/ip/ae18afb4-3c73-4098-bfc8-e108d3eff693/blob-802ab36.png/:/rs=w:600,h:450') center/contain no-repeat;
-  opacity:0.05; pointer-events:none; z-index:0;
+  opacity:0.05;
+  pointer-events:none;
+  z-index:0;
 }
+
 .page {position:relative; z-index:1; display:flex; flex-direction:column; min-height:100vh;}
+
 header {
-  background:var(--verde); color:white; padding:20px 24px;
-  display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap;
+  background:var(--gris-elegante);
+  color:white;
+  padding:20px 24px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
 }
+
 header .branding {display:flex; align-items:center; gap:18px;}
 header img {height:110px; object-fit:contain;}
 header h1 {font-family:'Lato',sans-serif; margin:0; font-size:22px;}
 header p {margin:0; font-size:15px;}
+
 main {padding:24px; flex:1;}
-table.dataTable thead th {background:var(--verde); color:white;}
+
+table.dataTable thead th {background:var(--gris-elegante); color:white;}
+
 .badge {padding:5px 10px; border-radius:8px; font-weight:600; font-size:0.95rem;}
-.badge.verde {background:var(--verde-pastel); color:var(--verde);}
+.badge.verde {background:var(--gris-claro); color:var(--gris-elegante);}
 .badge.rojo {background:var(--rojo-suave); color:#b00020;}
-.dt-control {cursor:pointer; color:var(--verde); text-decoration:underline;}
+
+.dt-control {cursor:pointer; color:var(--gris-elegante); text-decoration:underline;}
+
 .detalle {background:white; border:1px solid #ddd; padding:12px; border-radius:10px; margin:6px 0;}
+
 footer {
-  background:var(--verde); color:white; text-align:center; padding:18px 20px; font-size:15px;
+  background:var(--gris-elegante);
+  color:white;
+  text-align:center;
+  padding:18px 20px;
+  font-size:15px;
 }
+
 footer a {color:white; text-decoration:underline; margin:0 6px;}
 footer img {height:120px; margin-top:10px; opacity:0.95;}
+
+/* --- Fix responsive table --- */
+#arbitros {
+  width: 100%;
+  table-layout: auto;
+}
+.dataTables_wrapper {
+  overflow-x: auto;
+}
+#arbitros td, #arbitros th {
+  white-space: normal;
+  word-break: break-word;
+}
 </style>
 </head>
 <body>
@@ -61,7 +106,7 @@ footer img {height:120px; margin-top:10px; opacity:0.95;}
   </header>
 
   <main>
-    <table id="arbitros" class="display nowrap" style="width:100%">
+    <table id="arbitros" class="display" style="width:100%">
       <thead>
         <tr>
           <th></th><th>Cód.</th><th>Nombre completo</th><th>DNI</th><th>Teléfono</th><th>Correo</th><th>COLEGIATURA</th><th>Especialidad</th><th>Estado RNA</th>
@@ -71,10 +116,10 @@ footer img {height:120px; margin-top:10px; opacity:0.95;}
       <tr data-detalle='{"formacion":"Maestría en Derecho Registral y Notarial (USMP); Abogado PUCP","cursos":"Seminario Derecho y Publicidad; Congreso Internacional de Derecho Procesal","capacitaciones":"","horas":"—"}'>
         <td class="dt-control">Ver detalle</td><td>1.0</td><td>Ricardo Rolando Pacheco Paredes</td><td>25744163</td><td>992727152 / (01) 6925420</td><td>ricardopachecoparedes@gmail.com</td><td>CAL 32925</td><td>Derecho Registral y Notarial</td><td><span class="badge rojo">—</span></td>
       </tr>
-      <tr data-detalle='{"formacion":"UPLA Derecho; Maestría en Resolución de Conflictos y Mediación","cursos":"Contratos estandarizados; Negociación Colectiva (32h); Arbitraje en contrataciones del Estado","capacitaciones":"Conflictos socio-ambientales; Contrataciones con el Estado","horas":"1168"}'>
+      <tr data-detalle='{"formacion":"UPLA Derecho; Maestría en Resolución de Conflictos y Mediación","cursos":"Contratos estandarizados; Negociación Colectiva (32h); Arbitraje en contrataciones del Estado","capacitaciones":"Conflictos socio-ambientales; Contrataciones con el Estado","horas":"1384"}'>
         <td class="dt-control">Ver detalle</td><td>2.0</td><td>Halley Esterhazy López Zaldíva</td><td>43647851</td><td>968138487</td><td>marcinfraestructura@gmail.com</td><td>CA Huancayo 3023</td><td>Resolución de Conflictos y Mediación</td><td><span class="badge verde">SI</span></td>
       </tr>
-      <tr data-detalle='{"formacion":"Máster en Derecho de Contratación Pública (UCLM); Doctorado en Derecho (U. Garcilaso)","cursos":"Diplomados en contratación pública y derecho administrativo","capacitaciones":"+40 seminarios y congresos en arbitraje y construcción","horas":"5299"}'>
+      <tr data-detalle='{"formacion":"Máster en Derecho de Contratación Pública (UCLM); Doctorado en Derecho (U. Garcilaso); Ingeniería Civil (PUCP)","cursos":"Diplomados en contratación pública y derecho administrativo","capacitaciones":"+40 seminarios y congresos en arbitraje y construcción","horas":"5299"}'>
         <td class="dt-control">Ver detalle</td><td>3.0</td><td>Mario Manuel Silva López</td><td>7208632</td><td>996287413 / (01) 2423143</td><td>mariosilvalopez@yahoo.es</td><td>CAL 53118</td><td>Contratación Pública</td><td><span class="badge verde">SI</span></td>
       </tr>
       <tr data-detalle='{
@@ -209,7 +254,7 @@ footer img {height:120px; margin-top:10px; opacity:0.95;}
         "formacion":"Abogado (UNMSM); Maestría en Derecho Civil y Comercial (UNFV)",
         "cursos":"Arbitraje contrataciones públicas; Derecho administrativo; JRD; Energía y concesiones",
         "capacitaciones":"PUCP, ESAN, UCH, UNMSM; post títulos en derecho público y contratación estatal",
-        "horas":"—"
+        "horas":"1809"
       }'>
         <td class="dt-control">Ver detalle</td>
         <td>12.0</td>
@@ -429,12 +474,8 @@ footer img {height:120px; margin-top:10px; opacity:0.95;}
         <td>Arbitraje en Contratación Pública; Obras por Impuesto; Contrataciones Públicas</td>
         <td><span class="badge rojo">—</span></td>
       </tr>
-                                                                        
-  
-            
-        
-      
-      <!-- ...continúa con las filas 4 a 25 siguiendo el mismo patrón... -->
+
+      <!-- Comentario corregido: debe cerrar con --> correctamente -->
       </tbody>
     </table>
   </main>
@@ -463,8 +504,12 @@ footer img {height:120px; margin-top:10px; opacity:0.95;}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
 
 <script>
+function safeParseJSON(str) {
+  try { return JSON.parse(str); } catch (e) { return {}; }
+}
+
 function formatDetalle(rowData) {
-  const d = rowData._detalle || {}
+  const d = rowData._detalle || {};
   return `
     <div class="detalle">
       <h3>${rowData.Nombre || ''}</h3>
@@ -479,7 +524,7 @@ $(document).ready(function () {
   $('#arbitros tbody tr').each(function () {
     const $tr = $(this);
     const detalleAttr = $tr.attr('data-detalle');
-    const detalleObj = JSON.parse(detalleAttr || '{}');
+    const detalleObj = safeParseJSON(detalleAttr || '{}');
     const cells = $tr.children('td');
     const rowData = {
       Nombre: cells.eq(2).text().trim(),
@@ -491,6 +536,7 @@ $(document).ready(function () {
 
   const table = $('#arbitros').DataTable({
     responsive: true,
+    scrollX: true,
     pageLength: 10,
     dom: 'Bfrtip',
     buttons: [
