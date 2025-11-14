@@ -10,13 +10,11 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css">
 <style>
 :root{
-  /* He puesto los valores "verde" originales a tonos de gris para no cambiar referencias en el resto del archivo */
-  --verde: #3d3d3d;           /* ahora gris oscuro */
-  --verde-pastel: #f0f0f0;   /* gris claro para badges */
+  --gris-elegante: #3d3d3d;   /* gris oscuro */
+  --gris-claro: #f0f0f0;      /* gris claro para badges */
   --rojo-suave: #ffebee;
   --fondo: #fafcfa;
   --texto: #1a1a1a;
-  --gris-elegante: #3d3d3d; /* alias */
 }
 
 html, body {
@@ -62,7 +60,7 @@ main {padding:24px; flex:1;}
 table.dataTable thead th {background:var(--gris-elegante); color:white;}
 
 .badge {padding:5px 10px; border-radius:8px; font-weight:600; font-size:0.95rem;}
-.badge.verde {background:var(--verde-pastel); color:var(--gris-elegante);} /* mantiene la clase .verde pero con gris */
+.badge.verde {background:var(--gris-claro); color:var(--gris-elegante);} 
 .badge.rojo {background:var(--rojo-suave); color:#b00020;}
 
 .dt-control {cursor:pointer; color:var(--gris-elegante); text-decoration:underline;}
@@ -86,13 +84,12 @@ footer img {height:120px; margin-top:10px; opacity:0.95;}
   table-layout: auto;
 }
 .dataTables_wrapper {
-  overflow-x: auto;   /* habilita scroll horizontal si se necesita */
+  overflow-x: auto;
 }
 #arbitros td, #arbitros th {
-  white-space: normal;   /* permite saltos de línea */
+  white-space: normal;
   word-break: break-word;
 }
-
 </style>
 </head>
 <body>
@@ -478,11 +475,7 @@ footer img {height:120px; margin-top:10px; opacity:0.95;}
         <td><span class="badge rojo">—</span></td>
       </tr>
                                                                         
-  
-            
-        
-      
-      <!-- ...continúa con las filas 4 a 25 siguiendo el mismo patrón... -->
+       
       </tbody>
     </table>
   </main>
@@ -511,8 +504,12 @@ footer img {height:120px; margin-top:10px; opacity:0.95;}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
 
 <script>
+function safeParseJSON(str) {
+  try { return JSON.parse(str); } catch (e) { return {}; }
+}
+
 function formatDetalle(rowData) {
-  const d = rowData._detalle || {}
+  const d = rowData._detalle || {};
   return `
     <div class="detalle">
       <h3>${rowData.Nombre || ''}</h3>
@@ -527,7 +524,7 @@ $(document).ready(function () {
   $('#arbitros tbody tr').each(function () {
     const $tr = $(this);
     const detalleAttr = $tr.attr('data-detalle');
-    const detalleObj = JSON.parse(detalleAttr || '{}');
+    const detalleObj = safeParseJSON(detalleAttr || '{}');
     const cells = $tr.children('td');
     const rowData = {
       Nombre: cells.eq(2).text().trim(),
@@ -547,24 +544,7 @@ $(document).ready(function () {
       { extend: 'pdfHtml5', text: 'PDF' },
       { extend: 'print', text: 'Imprimir' }
     ],
-    language: { url: 'https://cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json' }
-  });
-
-  $('#arbitros tbody').on('click', 'td.dt-control', function () {
-    const tr = $(this).closest('tr');
-    const row = table.row(tr);
-    if (row.child.isShown()) {
-      row.child.hide();
-      tr.removeClass('shown');
-      $(this).text('Ver detalle');
-    } else {
-      const data = tr.data('rowData') || {};
-      row.child(formatDetalle(data)).show();
-      tr.addClass('shown');
-      $(this).text('Ocultar detalle');
-    }
-  });
-});
+    language: { url: 
 </script>
 </body>
 </html>
