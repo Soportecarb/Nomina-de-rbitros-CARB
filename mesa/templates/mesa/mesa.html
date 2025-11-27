@@ -1,0 +1,98 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mesa Virtual</title>
+    <link rel="stylesheet" href="{% static 'mesa/style.css' %}">
+
+</head>
+
+<body>
+{% load static %}
+
+    <!-- BARRA SUPERIOR -->
+    <header class="topbar">
+               <div class="logo">
+            <img src="{% static 'mesa/logo.png' %}" alt="Logo">
+            <span>CONSEJO ARBITRAL DE LIMA</span>
+        </div>
+
+        <nav class="menu">
+            <a href="{% url 'inicio' %}" class="nav-btn">Inicio</a>
+            <a href="#" class="nav-btn">Reglamento</a>
+
+            {% if request.user.is_authenticated %}
+                <span class="user-label">👤 {{ request.user.username }}</span>
+                <a href="{% url 'logout' %}" class="nav-btn logout-btn">Cerrar Sesión</a>
+            {% else %}
+                <a href="{% url 'login' %}" class="nav-btn login-btn">Iniciar Sesión</a>
+            {% endif %}
+        </nav>
+    </header>
+
+        <!-- DESCRIPCIÓN DEL CENTRO -->
+<section class="center-description">
+    <img src="{% static 'mesa/logo.png' %}" alt="Logo del Centro" class="logo-center">
+    <p>
+        El Consejo Arbitral de Lima es una institución dedicada a la resolución de conflictos
+        laborales y comerciales, garantizando transparencia, legalidad y eficiencia en cada proceso.
+    </p>
+</section>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="main-wrapper">
+
+        <section class="content">
+            <h1 class="titulo">Mesa de Partes Virtual</h1>
+
+            <div class="botonera">
+
+                {% if request.user.is_authenticated %}
+
+                    {% if not request.user.is_superuser %}
+                        <!-- BOTONES USUARIO NORMAL -->
+<a href="{% url 'seguir_expediente' %}" class="btn-main">Seguir Expediente</a>
+<a href="{% url 'solicitud_arbitraje' %}" class="btn-main">Solicitud de Arbitraje</a>
+<a href="{% url 'subir_documento' %}" class="btn-main">Presentar Documento</a>
+<a href="{% url 'otros' %}" class="btn-ghost">Otros</a>
+
+                    {% else %}
+                       <!-- BOTONES ADMIN -->
+<a href="{% url 'buscar_documentos' %}" class="btn-main">Buscar Expediente</a>
+<a href="{% url 'subir_documento' %}" class="btn-main">Subir Documento</a>
+<a href="{% url 'responder_solicitudes' %}" class="btn-main">Contestar Solicitud</a>
+<a href="{% url 'administrar_sistema' %}" class="btn-ghost">Administrar Sistema</a>
+                    {% endif %}
+
+                {% else %}
+                    <p class="muted">Inicie sesión para ver las funciones.</p>
+                    <a href="{% url 'login' %}" class="btn-main">Iniciar Sesión</a>
+                {% endif %}
+
+            </div>
+        </section>
+
+        <!-- CONTACTO A LA DERECHA -->
+        <aside class="contact-box">
+            <h3>Contacto</h3>
+            <p><strong>Teléfono:</strong> 999-888-777</p>
+            <p><strong>Email:</strong> contacto@arbitrajelima.pe</p>
+            <p><strong>Dirección:</strong> Lima, Perú</p>
+        </aside>
+
+    </main>
+
+    <!-- PIE DE PÁGINA -->
+    <footer class="footer">
+        <p>CONSEJO ARBITRAL DE LIMA – Todos los derechos reservados © 2025</p>
+    </footer>
+
+      <footer>
+    © 2025 Consejo Arbitral de Lima — Todos los derechos reservados
+</footer>
+
+</body>
+
+</html>

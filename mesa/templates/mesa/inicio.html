@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Inicio – Mesa Virtual</title>
+    <link rel="stylesheet" href="{% static 'mesa/style.css' %}">
+</head>
+
+<body>
+{% load static %}
+
+    <!-- BARRA SUPERIOR -->
+    <header class="topbar">
+        <div class="logo">
+            <img src="{% static 'mesa/logo.png' %}" alt="Logo">
+            <span>CONSEJO ARBITRAL DE LIMA</span>
+        </div>
+
+        <nav class="menu">
+            <a href="{% url 'inicio' %}" class="nav-btn">Inicio</a>
+            <a href="#" class="nav-btn">Reglamento</a>
+        </nav>
+    </header>
+
+     <section class="center-description">
+        <img src="{% static 'mesa/logo.png' %}" alt="Logo del Centro" class="logo-center">
+        <p>
+            El Consejo Arbitral de Lima es una institución especializada en la administración de procesos
+             arbitrales, comprometida con la transparencia, la eficiencia y el respeto a la normativa vigente.
+             Nuestra misión es brindar un servicio confiable y accesible que garantice la solución imparcial
+             de controversias, fortaleciendo la seguridad jurídica y la confianza en los mecanismos alternativos
+             de resolución de conflictos.
+        </p>
+    </section>
+    <!-- CONTENIDO PRINCIPAL DE INICIO -->
+    <main class="inicio-container">
+
+        <section class="content">
+            <h1 class="titulo">Mesa de Partes Virtual</h1>
+            <p class="sub-text">
+                Bienvenido al sistema virtual del Consejo Arbitral de Lima.
+            </p>
+
+            <div class="inicio-botones">
+                <a href="{% url 'login' %}" class="btn-main">Iniciar Sesión</a>
+                <a href="{% url 'register' %}" class="btn-ghost">Registrarse</a>
+                <a href="{% url 'login_admin' %}" class="btn-main admin-btn">Iniciar Sesión como Administrador</a>
+            </div>
+        </section>
+
+        <!-- CONTACTO A LA DERECHA -->
+        <aside class="contact-box">
+            <h3>Contacto</h3>
+            <p><strong>Teléfono:</strong> 999-888-777</p>
+            <p><strong>Email:</strong> contacto@arbitrajelima.pe</p>
+            <p><strong>Dirección:</strong> Lima, Perú</p>
+        </aside>
+
+    </main>
+
+    <!-- PIE DE PÁGINA FORMAL -->
+    <footer class="footer">
+        <div class="footer-content">
+            <img src="{% static 'mesa/logo.png' %}" alt="Logo" class="footer-logo">
+            <div class="footer-text">
+                <p><strong>CONSEJO ARBITRAL DE LIMA</strong></p>
+                <p>Mesa de Partes Virtual – Transparencia y eficiencia en la gestión arbitral</p>
+                <p>Todos los derechos reservados © 2025</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

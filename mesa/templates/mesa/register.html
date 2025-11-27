@@ -1,0 +1,63 @@
+{% load static %}
+{% if messages %}
+  <div class="messages">
+    {% for message in messages %}
+      <div class="alert {{ message.tags }}">
+        {{ message }}
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro – Usuario</title>
+    <link rel="stylesheet" href="{% static 'mesa/style.css' %}">
+</head>
+<body>
+
+<header class="topbar">
+    <div class="logo">
+        <img src="{% static 'mesa/logo.png' %}" alt="Logo">
+        <span>CONSEJO ARBITRAL DE LIMA</span>
+    </div>
+</header>
+
+<main class="form-container">
+    <h1 class="titulo">Registro de Usuario</h1>
+
+    <form method="POST" action="{% url 'register' %}">
+        {% csrf_token %}
+        <label>Nombre completo</label>
+        <input type="text" name="nombre" required>
+
+        <label>Usuario</label>
+        <input type="text" name="username" required>
+
+        <label>Contraseña</label>
+        <input type="password" name="password" required>
+
+        <label>Email</label>
+        <input type="email" name="email" required>
+
+        <label>Dirección</label>
+        <input type="text" name="direccion">
+
+        <label>DNI / RUC</label>
+        <input type="text" name="dni_ruc">
+
+        <button type="submit" class="btn-main">Registrarse</button>
+    </form>
+
+    <p class="muted">¿Ya tienes cuenta? <a href="{% url 'login' %}" class="file-link">Inicia sesión aquí</a></p>
+</main>
+
+<footer class="footer">
+    <img src="{% static 'mesa/logo.png' %}" alt="Logo" class="footer-logo">
+    <p><strong>CONSEJO ARBITRAL DE LIMA</strong> – Todos los derechos reservados © 2025</p>
+</footer>
+
+</body>
+</html>
