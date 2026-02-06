@@ -15,11 +15,12 @@
 
 <style>
 :root{
-  --gris-elegante:#3d3d3d;
-  --gris-claro:#f0f0f0;
-  --rojo-suave:#ffebee;
-  --fondo:#fafcfa;
-  --texto:#1a1a1a;
+  --gris-institucional:#2f2f2f;
+  --gris-secundario:#5a5a5a;
+  --dorado:#b08d57;
+  --dorado-claro:#e8dcc8;
+  --fondo:#ffffff;
+  --texto:#1f1f1f;
 }
 
 *{box-sizing:border-box}
@@ -32,6 +33,7 @@ html,body{
   font-family:'Open Sans',sans-serif;
 }
 
+/* Marca de agua */
 .watermark{
   position:fixed;
   inset:0;
@@ -42,10 +44,17 @@ html,body{
   z-index:0;
 }
 
-.page{position:relative;z-index:1;display:flex;flex-direction:column;min-height:100vh}
+.page{
+  position:relative;
+  z-index:1;
+  display:flex;
+  flex-direction:column;
+  min-height:100vh;
+}
 
+/* Header */
 header{
-  background:var(--gris-elegante);
+  background:var(--gris-institucional);
   color:#fff;
   padding:20px 24px;
   display:flex;
@@ -55,54 +64,127 @@ header{
 }
 
 header img{height:110px}
-header h1{margin:0;font-family:'Lato',sans-serif;font-size:22px}
-header p{margin:0;font-size:15px}
 
-main{padding:24px;flex:1}
+header h1{
+  margin:0;
+  font-family:'Lato',sans-serif;
+  font-size:21px;
+  letter-spacing:.5px;
+}
 
+header p{
+  margin:0;
+  font-size:14px;
+  color:#e0e0e0;
+}
+
+main{
+  padding:24px;
+  flex:1;
+}
+
+/* Tabla */
 table.dataTable thead th{
-  background:var(--gris-elegante);
+  background:var(--gris-institucional);
   color:#fff;
-}
-
-.badge{
-  padding:5px 10px;
-  border-radius:8px;
   font-weight:600;
-  font-size:.95rem;
-  display:inline-block;
+  font-size:.9rem;
 }
-.badge.verde{background:var(--gris-claro);color:var(--gris-elegante)}
-.badge.rojo{background:var(--rojo-suave);color:#b00020}
 
+table.dataTable tbody td{
+  font-size:.9rem;
+  color:var(--texto);
+}
+
+/* Botón detalle */
 .dt-control{
   cursor:pointer;
-  color:var(--gris-elegante);
-  text-decoration:underline;
+  color:var(--gris-institucional);
   font-weight:600;
+  text-decoration:underline;
 }
 
+/* Badges institucionales */
+.badge{
+  padding:4px 9px;
+  border-radius:6px;
+  font-weight:600;
+  font-size:.85rem;
+  display:inline-block;
+}
+
+.badge.verde{
+  background:var(--dorado-claro);
+  color:var(--gris-institucional);
+}
+
+.badge.rojo{
+  background:#efefef;
+  color:var(--gris-secundario);
+}
+
+/* Detalle CV */
 .detalle{
   background:#fff;
   border:1px solid #ddd;
-  padding:14px;
-  border-radius:10px;
+  border-left:4px solid var(--dorado);
+  padding:14px 16px;
+  border-radius:4px;
   margin:6px 0;
 }
-.detalle h3{margin-top:0}
 
+.detalle h3{
+  margin:0 0 6px 0;
+  font-size:1rem;
+  font-weight:700;
+  color:var(--gris-institucional);
+}
+
+.resumen-cv{
+  font-size:.9rem;
+  line-height:1.65;
+  color:#333;
+  text-align:justify;
+}
+
+/* Botones DataTables */
+.dt-button{
+  background:var(--gris-institucional)!important;
+  color:#fff!important;
+  border:none!important;
+  border-radius:4px!important;
+  padding:6px 12px!important;
+  font-size:.85rem!important;
+}
+
+.dt-button:hover{
+  background:var(--dorado)!important;
+  color:#000!important;
+}
+
+/* Footer */
 footer{
-  background:var(--gris-elegante);
+  background:var(--gris-institucional);
   color:#fff;
   text-align:center;
   padding:18px;
-  font-size:15px;
+  font-size:14px;
 }
-footer a{color:#fff;text-decoration:underline;margin:0 6px}
-footer img{height:120px;margin-top:10px}
 
-/* Responsive fixes */
+footer a{
+  color:#fff;
+  text-decoration:underline;
+  margin:0 6px;
+}
+
+footer img{
+  height:120px;
+  margin-top:10px;
+}
+
+/* Responsive */
 .dataTables_wrapper{overflow-x:auto}
+
 #arbitros td,#arbitros th{
   white-space:normal;
   word-break:break-word;
@@ -114,6 +196,7 @@ footer img{height:120px;margin-top:10px}
 <div class="watermark" aria-hidden="true"></div>
 
 <div class="page">
+
 <header>
   <img src="https://img1.wsimg.com/isteam/ip/ae18afb4-3c73-4098-bfc8-e108d3eff693/blob-802ab36.png/:/rs=w:600,h:450" alt="Logo CARB">
   <div>
@@ -139,6 +222,7 @@ footer img{height:120px;margin-top:10px}
 </thead>
 
 <tbody>
+
   <tr data-detalle='{
   "formacion":"Abogada (PUCP); Maestría en Derecho Administrativo",
   "cursos":"Arbitraje en contrataciones del Estado (120h); JRD sector construcción",
@@ -518,7 +602,7 @@ footer img{height:120px;margin-top:10px}
         <td><span class="badge rojo">—</span></td>
       </tr>
 
-     </tbody>
+    </tbody>
 </table>
 </main>
 
@@ -533,6 +617,7 @@ footer img{height:120px;margin-top:10px}
   </p>
   <img src="https://img1.wsimg.com/isteam/ip/ae18afb4-3c73-4098-bfc8-e108d3eff693/blob-802ab36.png/:/rs=w:600,h:450" alt="Logo CARB">
 </footer>
+
 </div>
 
 <!-- Scripts -->
@@ -553,37 +638,32 @@ const safeParseJSON = str => {
 
 const formatDetalle = data => {
   const d = data._detalle || {};
-
-  const formacion = d.formacion ? d.formacion : 'Formación académica no especificada';
-  const cursos = d.cursos ? d.cursos : 'diversos programas de especialización';
-  const capacitaciones = d.capacitaciones ? d.capacitaciones : 'actividades académicas y profesionales';
   const horas = d.horas && d.horas !== '—'
-    ? `, acumulando aproximadamente ${d.horas} horas de capacitación especializada`
+    ? `, acumulando aproximadamente ${d.horas} horas de formación especializada`
     : '';
 
   return `
     <div class="detalle">
       <h3>${data.Nombre}</h3>
-
       <p class="resumen-cv">
-        Profesional con ${formacion.toLowerCase()}, con especialización en áreas vinculadas a su práctica arbitral.
-        Ha complementado su desarrollo profesional mediante ${cursos.toLowerCase()},
-        así como ${capacitaciones.toLowerCase()}${horas}.
+        Profesional con ${d.formacion || 'formación académica relevante'}, que ha complementado su desarrollo
+        mediante ${d.cursos || 'programas de especialización'}, así como ${d.capacitaciones || 'diversas actividades académicas'}${horas}.
+        Su trayectoria refleja compromiso con la excelencia y la práctica arbitral especializada.
       </p>
     </div>
   `;
 };
 
-$(function () {
-  $('#arbitros tbody tr').each(function () {
-    const tds = $(this).children('td');
-    $(this).data('rowData', {
-      Nombre: tds.eq(2).text().trim(),
-      _detalle: safeParseJSON($(this).attr('data-detalle'))
+$(function(){
+  $('#arbitros tbody tr').each(function(){
+    const tds=$(this).children('td');
+    $(this).data('rowData',{
+      Nombre:tds.eq(2).text().trim(),
+      _detalle:safeParseJSON($(this).attr('data-detalle'))
     });
   });
 
-  const table = $('#arbitros').DataTable({
+  const table=$('#arbitros').DataTable({
     responsive:true,
     scrollX:true,
     pageLength:10,
@@ -596,7 +676,8 @@ $(function () {
     const tr=$(this).closest('tr');
     const row=table.row(tr);
     if(row.child.isShown()){
-      row.child.hide();$(this).text('Ver detalle');
+      row.child.hide();
+      $(this).text('Ver detalle');
     }else{
       row.child(formatDetalle(tr.data('rowData'))).show();
       $(this).text('Ocultar detalle');
