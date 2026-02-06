@@ -4,116 +4,159 @@
 <meta charset="utf-8" />
 <title>Nómina de Árbitros — Consejo Arbitral de Lima</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- DataTables -->
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css">
+
 <style>
 :root{
-  --gris-elegante: #3d3d3d;   /* gris oscuro */
-  --gris-claro: #f0f0f0;      /* gris claro para badges */
-  --rojo-suave: #ffebee;
-  --fondo: #fafcfa;
-  --texto: #1a1a1a;
+  --gris-elegante:#3d3d3d;
+  --gris-claro:#f0f0f0;
+  --rojo-suave:#ffebee;
+  --fondo:#fafcfa;
+  --texto:#1a1a1a;
 }
 
-html, body {
+*{box-sizing:border-box}
+
+html,body{
   margin:0;
-  height:100%;
+  min-height:100%;
   background:var(--fondo);
   color:var(--texto);
   font-family:'Open Sans',sans-serif;
 }
 
-.watermark {
+.watermark{
   position:fixed;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  width:60vmin;
-  height:60vmin;
-  background:url('https://img1.wsimg.com/isteam/ip/ae18afb4-3c73-4098-bfc8-e108d3eff693/blob-802ab36.png/:/rs=w:600,h:450') center/contain no-repeat;
-  opacity:0.05;
+  inset:0;
+  background:url('https://img1.wsimg.com/isteam/ip/ae18afb4-3c73-4098-bfc8-e108d3eff693/blob-802ab36.png/:/rs=w:600,h:450')
+    center/contain no-repeat;
+  opacity:.05;
   pointer-events:none;
   z-index:0;
 }
 
-.page {position:relative; z-index:1; display:flex; flex-direction:column; min-height:100vh;}
+.page{position:relative;z-index:1;display:flex;flex-direction:column;min-height:100vh}
 
-header {
+header{
   background:var(--gris-elegante);
-  color:white;
+  color:#fff;
   padding:20px 24px;
   display:flex;
   align-items:center;
-  justify-content:space-between;
+  gap:20px;
   flex-wrap:wrap;
 }
 
-header .branding {display:flex; align-items:center; gap:18px;}
-header img {height:110px; object-fit:contain;}
-header h1 {font-family:'Lato',sans-serif; margin:0; font-size:22px;}
-header p {margin:0; font-size:15px;}
+header img{height:110px}
+header h1{margin:0;font-family:'Lato',sans-serif;font-size:22px}
+header p{margin:0;font-size:15px}
 
-main {padding:24px; flex:1;}
+main{padding:24px;flex:1}
 
-table.dataTable thead th {background:var(--gris-elegante); color:white;}
-
-.badge {padding:5px 10px; border-radius:8px; font-weight:600; font-size:0.95rem;}
-.badge.verde {background:var(--gris-claro); color:var(--gris-elegante);}
-.badge.rojo {background:var(--rojo-suave); color:#b00020;}
-
-.dt-control {cursor:pointer; color:var(--gris-elegante); text-decoration:underline;}
-
-.detalle {background:white; border:1px solid #ddd; padding:12px; border-radius:10px; margin:6px 0;}
-
-footer {
+table.dataTable thead th{
   background:var(--gris-elegante);
-  color:white;
+  color:#fff;
+}
+
+.badge{
+  padding:5px 10px;
+  border-radius:8px;
+  font-weight:600;
+  font-size:.95rem;
+  display:inline-block;
+}
+.badge.verde{background:var(--gris-claro);color:var(--gris-elegante)}
+.badge.rojo{background:var(--rojo-suave);color:#b00020}
+
+.dt-control{
+  cursor:pointer;
+  color:var(--gris-elegante);
+  text-decoration:underline;
+  font-weight:600;
+}
+
+.detalle{
+  background:#fff;
+  border:1px solid #ddd;
+  padding:14px;
+  border-radius:10px;
+  margin:6px 0;
+}
+.detalle h3{margin-top:0}
+
+footer{
+  background:var(--gris-elegante);
+  color:#fff;
   text-align:center;
-  padding:18px 20px;
+  padding:18px;
   font-size:15px;
 }
+footer a{color:#fff;text-decoration:underline;margin:0 6px}
+footer img{height:120px;margin-top:10px}
 
-footer a {color:white; text-decoration:underline; margin:0 6px;}
-footer img {height:120px; margin-top:10px; opacity:0.95;}
-
-/* --- Fix responsive table --- */
-#arbitros {
-  width: 100%;
-  table-layout: auto;
-}
-.dataTables_wrapper {
-  overflow-x: auto;
-}
-#arbitros td, #arbitros th {
-  white-space: normal;
-  word-break: break-word;
+/* Responsive fixes */
+.dataTables_wrapper{overflow-x:auto}
+#arbitros td,#arbitros th{
+  white-space:normal;
+  word-break:break-word;
 }
 </style>
 </head>
+
 <body>
 <div class="watermark" aria-hidden="true"></div>
-<div class="page">
-  <header>
-    <div class="branding">
-      <img src="https://img1.wsimg.com/isteam/ip/ae18afb4-3c73-4098-bfc8-e108d3eff693/blob-802ab36.png/:/rs=w:600,h:450" alt="Logo Consejo Arbitral de Lima" />
-      <div>
-        <h1>Consejo Arbitral de Lima 2026</h1>
-        <p>CARB — Nómina de Árbitros</p>
-      </div>
-    </div>
-  </header>
 
-  <main>
-    <table id="arbitros" class="display" style="width:100%">
-      <thead>
-        <tr>
-          <th></th><th>Cód.</th><th>Nombre completo</th><th>DNI</th><th>Teléfono</th><th>Correo</th><th>COLEGIATURA</th><th>Especialidad</th><th>Estado RNA</th>
-        </tr>
-      </thead>
-      <tbody>
-      <tr data-detalle='{"formacion":"UPLA Derecho; Maestría en Resolución de Conflictos y Mediación","cursos":"Contratos estandarizados; Negociación Colectiva (32h); Arbitraje en contrataciones del Estado","capacitaciones":"Conflictos socio-ambientales; Contrataciones con el Estado","horas":"1384"}'>
+<div class="page">
+<header>
+  <img src="https://img1.wsimg.com/isteam/ip/ae18afb4-3c73-4098-bfc8-e108d3eff693/blob-802ab36.png/:/rs=w:600,h:450" alt="Logo CARB">
+  <div>
+    <h1>Consejo Arbitral de Lima 2026</h1>
+    <p>CARB — Nómina de Árbitros</p>
+  </div>
+</header>
+
+<main>
+<table id="arbitros" class="display" style="width:100%">
+<thead>
+<tr>
+  <th></th>
+  <th>Cód.</th>
+  <th>Nombre completo</th>
+  <th>DNI</th>
+  <th>Teléfono</th>
+  <th>Correo</th>
+  <th>Colegiatura</th>
+  <th>Especialidad</th>
+  <th>Estado RNA</th>
+</tr>
+</thead>
+
+<tbody>
+  <tr data-detalle='{
+  "formacion":"Abogada (PUCP); Maestría en Derecho Administrativo",
+  "cursos":"Arbitraje en contrataciones del Estado (120h); JRD sector construcción",
+  "capacitaciones":"PUCP, OSCE, ESAN",
+  "horas":"980"
+}'>
+  <td class="dt-control">Ver detalle</td>
+  <td>26.0</td>
+  <td>Angélica Rodríguez Castañeda</td>
+  <td>41234567</td>
+  <td>987654321</td>
+  <td>angelica.rodriguez@gmail.com</td>
+  <td>CAL 81234</td>
+  <td>Arbitraje; Derecho Administrativo</td>
+  <td><span class="badge verde">SI</span></td>
+</tr>
+
+  <tr data-detalle='{"formacion":"UPLA Derecho; Maestría en Resolución de Conflictos y Mediación","cursos":"Contratos estandarizados; Negociación Colectiva (32h); Arbitraje en contrataciones del Estado","capacitaciones":"Conflictos socio-ambientales; Contrataciones con el Estado","horas":"1384"}'>
         <td class="dt-control">Ver detalle</td><td>2.0</td><td>Halley Esterhazy López Zaldíva</td><td>43647851</td><td>968138487</td><td>marcinfraestructura@gmail.com</td><td>CA Huancayo 3023</td><td>Resolución de Conflictos y Mediación</td><td><span class="badge verde">SI</span></td>
       </tr>
       <tr data-detalle='{"formacion":"Máster en Derecho de Contratación Pública (UCLM); Doctorado en Derecho (U. Garcilaso); Ingeniería Civil (PUCP)","cursos":"Diplomados en contratación pública y derecho administrativo","capacitaciones":"+40 seminarios y congresos en arbitraje y construcción","horas":"5299"}'>
@@ -475,24 +518,24 @@ footer img {height:120px; margin-top:10px; opacity:0.95;}
         <td><span class="badge rojo">—</span></td>
       </tr>
 
-      <!-- Comentario corregido: debe cerrar con -->
-      </tbody>
-    </table>
-  </main>
+     </tbody>
+</table>
+</main>
 
-  <footer>
-    <p><strong>Consejo Arbitral de Lima</strong> &copy; 2025 — Todos los derechos reservados</p>
-    <p>
-      <a href="https://consejoarbitraldelima.com/">Inicio</a> |
-      <a href="#">Reglamento</a> |
-      <a href="#">Contacto</a> |
-      <span>Tel: 904852806</span> |
-      <span>Correo: mesadepartes@consejoarbitraldelima.com</span>
-    </p>
-    <img src="https://img1.wsimg.com/isteam/ip/ae18afb4-3c73-4098-bfc8-e108d3eff693/blob-802ab36.png/:/rs=w:600,h:450" alt="Logo CARB" />
-  </footer>
+<footer>
+  <p><strong>Consejo Arbitral de Lima</strong> © 2025 — Todos los derechos reservados</p>
+  <p>
+    <a href="https://consejoarbitraldelima.com/">Inicio</a> |
+    <a href="#">Reglamento</a> |
+    <a href="#">Contacto</a> |
+    <span>Tel: 904852806</span> |
+    <span>Correo: mesadepartes@consejoarbitraldelima.com</span>
+  </p>
+  <img src="https://img1.wsimg.com/isteam/ip/ae18afb4-3c73-4098-bfc8-e108d3eff693/blob-802ab36.png/:/rs=w:600,h:450" alt="Logo CARB">
+</footer>
 </div>
 
+<!-- Scripts -->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
@@ -504,60 +547,58 @@ footer img {height:120px; margin-top:10px; opacity:0.95;}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
 
 <script>
-function safeParseJSON(str) {
-  try { return JSON.parse(str); } catch (e) { return {}; }
-}
+const safeParseJSON = str => {
+  try { return JSON.parse(str); } catch { return {}; }
+};
 
-function formatDetalle(rowData) {
-  const d = rowData._detalle || {};
+const formatDetalle = data => {
+  const d = data._detalle || {};
+
+  const formacion = d.formacion ? d.formacion : 'Formación académica no especificada';
+  const cursos = d.cursos ? d.cursos : 'diversos programas de especialización';
+  const capacitaciones = d.capacitaciones ? d.capacitaciones : 'actividades académicas y profesionales';
+  const horas = d.horas && d.horas !== '—'
+    ? `, acumulando aproximadamente ${d.horas} horas de capacitación especializada`
+    : '';
+
   return `
     <div class="detalle">
-      <h3>${rowData.Nombre || ''}</h3>
-      <p><strong>Formación:</strong> ${d.formacion || '—'}</p>
-      <p><strong>Cursos:</strong> ${d.cursos || '—'}</p>
-      <p><strong>Capacitaciones:</strong> ${d.capacitaciones || '—'}</p>
-      <p><strong>Total horas:</strong> ${d.horas || '—'}</p>
-    </div>`;
-}
+      <h3>${data.Nombre}</h3>
 
-$(document).ready(function () {
+      <p class="resumen-cv">
+        Profesional con ${formacion.toLowerCase()}, con especialización en áreas vinculadas a su práctica arbitral.
+        Ha complementado su desarrollo profesional mediante ${cursos.toLowerCase()},
+        así como ${capacitaciones.toLowerCase()}${horas}.
+      </p>
+    </div>
+  `;
+};
+
+$(function () {
   $('#arbitros tbody tr').each(function () {
-    const $tr = $(this);
-    const detalleAttr = $tr.attr('data-detalle');
-    const detalleObj = safeParseJSON(detalleAttr || '{}');
-    const cells = $tr.children('td');
-    const rowData = {
-      Nombre: cells.eq(2).text().trim(),
-      Especialidad: cells.eq(7).text().trim(),
-      _detalle: detalleObj
-    };
-    $tr.data('rowData', rowData);
+    const tds = $(this).children('td');
+    $(this).data('rowData', {
+      Nombre: tds.eq(2).text().trim(),
+      _detalle: safeParseJSON($(this).attr('data-detalle'))
+    });
   });
 
   const table = $('#arbitros').DataTable({
-    responsive: true,
-    scrollX: true,
-    pageLength: 10,
-    dom: 'Bfrtip',
-    buttons: [
-      { extend: 'excelHtml5', text: 'Excel', exportOptions: { columns: ':visible' } },
-      { extend: 'pdfHtml5', text: 'PDF' },
-      { extend: 'print', text: 'Imprimir' }
-    ],
-    language: { url: 'https://cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json' }
+    responsive:true,
+    scrollX:true,
+    pageLength:10,
+    dom:'Bfrtip',
+    buttons:['excel','pdf','print'],
+    language:{url:'https://cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json'}
   });
 
-  $('#arbitros tbody').on('click', 'td.dt-control', function () {
-    const tr = $(this).closest('tr');
-    const row = table.row(tr);
-    if (row.child.isShown()) {
-      row.child.hide();
-      tr.removeClass('shown');
-      $(this).text('Ver detalle');
-    } else {
-      const data = tr.data('rowData') || {};
-      row.child(formatDetalle(data)).show();
-      tr.addClass('shown');
+  $('#arbitros').on('click','td.dt-control',function(){
+    const tr=$(this).closest('tr');
+    const row=table.row(tr);
+    if(row.child.isShown()){
+      row.child.hide();$(this).text('Ver detalle');
+    }else{
+      row.child(formatDetalle(tr.data('rowData'))).show();
       $(this).text('Ocultar detalle');
     }
   });
